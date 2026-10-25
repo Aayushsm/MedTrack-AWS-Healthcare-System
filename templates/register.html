@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h3 class="card-title text-center mb-4 text-primary fw-bold">Create Account</h3>
+                <form action="{{ url_for('register') }}" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="name" class="form-control" required placeholder="Dr. John Doe / Jane Smith">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" name="email" class="form-control" required placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required placeholder="••••••••">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select name="role" class="form-select" required>
+                            <option value="Patient">Patient</option>
+                            <option value="Doctor">Doctor</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-2">Register</button>
+                </form>
+                <div class="text-center mt-3">
+                    <small>Already registered? <a href="{{ url_for('index') }}">Log In</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

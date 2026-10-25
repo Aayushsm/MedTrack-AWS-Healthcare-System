@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Patient Portal</h2>
+    <a href="{{ url_for('book_appointment') }}" class="btn btn-success">+ Book Appointment</a>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-white fw-bold">My Scheduled Appointments</div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Doctor ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in appointments %}
+                <tr>
+                    <td><code>{{ a.AppointmentID }}</code></td>
+                    <td>{{ a.DoctorID }}</td>
+                    <td>{{ a.Date }}</td>
+                    <td>{{ a.Time }}</td>
+                    <td><span class="badge bg-primary">{{ a.Status }}</span></td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" class="text-center py-4 text-muted">No appointments booked yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
